@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-page{
+    background-image: url("../img/background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+
+.header {
+    height: 100px;
+    background-color: transparent;
+}
+
+.header .container {
+    height: 100%;
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo {
+    display: flex;
+    justify-content: space-evenly;
+}
+ 
+.header .title {
+    color: white;
+    padding-left: 28px;
+    font-size: 14px
+}
+
+.header .container li{
+    display: inline;
+    list-style: none;
+}
+
+.header .container li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.header .container .navbar li {
+    padding: 0 80px;
+}
+
+.btn-login {
+    background-color: #FF6584;
+    padding: 12px 52px;
+    border-radius: 16px;
+    font-size: 16px ;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.home {
+    display: flex;
+    padding-top: 32px;
+
+}
+
+.home .text-content {
+    width: 50%;
+    margin-left: 10%;
+    padding-top: 60px;
+    
+}
+
+.home .text-content h2 {
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+.home .text-content p {
+    color: white;
+    font-weight: lighter;
+}
+
+.home .text-content .btn-acesse {
+    background-color: #FF6584;
+    width: 121px;
+    height: 48px;
+    color: white;
+    font-size: 16px;
+    margin-top: 22px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.home .img-content {
+    width: 50%;
+    margin: auto;
+    /* padding-left: 300px; */
+}
+
+.home .img-content .img-pianist {
+    padding-right: 12px;
+}
+
+
