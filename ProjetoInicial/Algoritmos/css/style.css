@@ -80,7 +80,7 @@ a {
 .home .text-content {
     width: 50%;
     margin-left: 10%;
-    padding-top: 60px;
+    padding-top: 80px;
 
 }
 
@@ -89,6 +89,11 @@ a {
     font-size: 48px;
     font-weight: bold;
     padding-bottom: 8px;
+}
+
+.home .text-content h2 span {
+    text-decoration: underline 1px #FF6584;
+    text-underline-position: from-font;
 }
 
 .home .text-content p {
@@ -103,7 +108,7 @@ a {
     height: 48px;
     color: white;
     font-size: 16px;
-    margin-top: 48px;
+    margin-top: 16px;
     cursor: pointer;
     border-radius: 16px;
     border: none;
@@ -127,7 +132,9 @@ a {
 .feedback .title h1 {
     font-size: 48px;
     font-weight: 900;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
+    padding-top: 32px;
+
 }
 
 .feedback .container-cards {
@@ -139,13 +146,14 @@ a {
 }
 
 .feedback .container-cards .cards {
-    height: fit-content;
+    height: 300px;
     width: 370px;
     border-radius: 16px;
     box-shadow: 10px 24px 54px 0px rgba(0, 0, 0, 0.06);
     padding: 32px 20px 20px 20px;
     text-align: justify;
     margin: 0 12px;
+    position: relative;
 }
 
 .feedback .container-cards .side-card {
@@ -173,7 +181,9 @@ a {
 }
 
 .feedback .container-cards .cards .img-stars {
-    margin-top: 28px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 .singer-page {

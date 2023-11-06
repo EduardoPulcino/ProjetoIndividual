@@ -1,0 +1,114 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container-login {
+    display: flex;
+    height: 1024px;
+    
+}
+
+.left-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #091227;
+    position: relative;
+}
+
+.left-content .img-logo {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+}
+
+.left-content .box-login {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.left-content .box-login h1{
+    font-size: 42px;
+    color: white;
+    padding-bottom: 48px;
+    font-family: 'Jura', sans-serif;
+}
+
+.left-content .box-login p {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 8px;
+}
+
+input#input_email {
+    margin-bottom: 16px;
+}
+
+.input {
+    height: 24px;
+    border-radius: 12px;
+    padding: 8px;
+    border: none;
+}
+
+.btn-login {
+    background-color: #FF6584;
+    padding: 12px 52px;
+    margin-top: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+}
+
+.msg-register {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 10px;
+}
+
+.msg-register a {
+    color:#FF6584;
+    text-decoration: none;
+}
+
+.right-content {
+    width: 40%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.right-content .navbar {
+    position: absolute;
+    top: 40px;
+}
+
+.right-content .navbar ul {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.right-content .navbar li {
+    list-style: none;
+    
+}
+
+.right-content .navbar a {
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Jura', sans-serif;
+    font-size: 26px;
+}
+    
