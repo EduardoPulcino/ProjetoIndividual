@@ -108,7 +108,7 @@ a {
     height: 48px;
     color: white;
     font-size: 16px;
-    margin-top: 16px;
+    margin-top: 32px;
     cursor: pointer;
     border-radius: 16px;
     border: none;
@@ -117,11 +117,10 @@ a {
 .home .img-content {
     width: 50%;
     margin: auto;
-    /* padding-left: 300px; */
 }
 
 .home .img-content .img-pianist {
-    padding-right: 20px;
+    padding-right: 110px;
 }
 
 .feedback .title {
@@ -140,13 +139,13 @@ a {
 .feedback .container-cards {
     display: flex;
     margin: 0 10%;
-    height: 500px;
+    height: 520px;
     justify-content: space-between;
 
 }
 
 .feedback .container-cards .cards {
-    height: 300px;
+    height: 345px;
     width: 370px;
     border-radius: 16px;
     box-shadow: 10px 24px 54px 0px rgba(0, 0, 0, 0.06);
@@ -200,7 +199,7 @@ a {
 
 .singer-page .container-singer .text-singer {
     width: 100%;
-    padding-left: 132px;
+    padding-left: 65px;
 }
 
 .singer-page .container-singer .text-singer h1 {
