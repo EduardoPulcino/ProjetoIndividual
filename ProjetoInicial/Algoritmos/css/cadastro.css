@@ -47,3 +47,104 @@
     font-family: 'Jura', sans-serif;
     color: white;
 }
+
+.right-content {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-content .box-register {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-content .box-register h1 {
+    text-align: center;
+    font-family: 'JURA', sans-serif;
+    margin-bottom: 44px;
+    color: #091227;
+}
+
+.right-content .box-register .titles-inputs {
+    color: #091227;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 16px;
+    font-weight: bold;
+
+}
+
+.right-content .box-register .inputs-name {
+    height: 24px;
+    border-radius: 12px;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: #091227;
+    color: white;
+}
+
+.right-content .box-register .inputs {
+    height: 24px;
+    border-radius: 12px;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: #091227;
+    color: white;
+    width: 100%;
+}
+
+::placeholder {
+    color: #c6c6c6;
+}
+
+
+
+.right-content .box-register .box-name {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right-content .box-register .box-name .name{
+    width: 50%;
+}
+
+.right-content .box-register .box-name .last-name{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.right-content .box-register .box-name .inputs-name{
+    width: 80%;
+}
+
+.btn-register {
+    background-color: #FF6584;
+    padding: 12px 52px;
+    margin-top: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+}
+
+.msg-login {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.msg-login a {
+    color:#FF6584;
+    text-decoration: none;
+}
