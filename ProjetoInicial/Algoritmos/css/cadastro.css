@@ -100,6 +100,7 @@
 
 ::placeholder {
     color: #c6c6c6;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -121,10 +122,6 @@
     align-items: end;
 }
 
-.right-content .box-register .box-name .last-name .title-last-name{
-    margin-right: 136px;
-}
-
 .right-content .box-register .box-name .inputs-name{
     width: 80%;
 }
@@ -132,7 +129,7 @@
 .btn-register {
     background-color: #FF6584;
     padding: 12px 52px;
-    margin-top: 16px;
+    margin-top: 32px;
     border-radius: 16px;
     font-size: 16px;
     color: white;
@@ -141,11 +138,12 @@
     border: none;
 }
 
-.msg-login {
+.msg-login p {
     text-align: center;
     margin-top: 8px;
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 .msg-login a {

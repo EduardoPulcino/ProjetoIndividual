@@ -2,6 +2,7 @@
 *{
     margin: 0;
     padding: 0;
+
 }
 
 
@@ -18,14 +19,8 @@
     align-items: center;
     width: 60%;
     background-color: #091227;
-    position: relative;
 }
 
-.left-content .img-logo {
-    position: absolute;
-    top: 40px;
-    left: 60px;
-}
 
 .left-content .box-login {
     display: flex;
@@ -44,6 +39,10 @@
     color: white;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 8px;
+}
+
+::placeholder {
+    font-family: 'Poppins', sans-serif;
 }
 
 input#input_email {
@@ -73,7 +72,7 @@ input#input_email {
 .msg-register {
     text-align: center;
     margin-top: 8px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .msg-register a {
