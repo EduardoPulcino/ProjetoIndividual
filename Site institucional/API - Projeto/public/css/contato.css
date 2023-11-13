@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-page {
+    height: 100px;
+}
+
+.header {
+    height: 100px;
+    background-color: #091227;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+
+}
+
+.header .container {
+    height: 100%;
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header .logo {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header .title {
+    color: white;
+    padding-left: 28px;
+    font-size: 14px
+}
+
+.header .container li {
+    display: inline;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header .container .navbar li {
+    padding: 0 40px;
+}
+
+.btn-login {
+    background-color: #FF6584;
+    padding: 12px 52px;
+    border-radius: 16px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    letter-spacing: 1px;
+}
+
+.box-contact {
+    background-color: white;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+    
+.title-contact {
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 32px;
+    letter-spacing: 10px;
+    color: #091227;
+    padding-bottom: 32px;
+}
+
+.box-inputs {
+    width: 300px;
+}
+
+.box-inputs-msg {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.box-inputs-msg p {
+    color: #091227;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 16px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.input-title .inputs {
+    height: 24px;
+    border-radius: 12px;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: #091227;
+    color: white;
+    width: 100%;
+}
+
+::placeholder {
+    color: white;
+}
+
+.div-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-send {
+    width: 40%;
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 12px;
+    border: none;
+    background-color: #FF6584;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+textarea#ipt_mensagem_contato {
+    background-color: #091227;
+    padding: 8px;
+    border: solid 1px white;
+    border-radius: 12px;
+    height: 62.5%;
+    color: white;
+}
+
+.footer {
+    background-color: #091227;
+    height: 274px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.footer .container-footer {
+    margin: 0 0 0 10%;
+    display: flex;
+    padding-top: 52px;
+    
+}
+
+.footer .container-footer .left-content-footer {
+    
+    width: 35%;
+}
+
+.footer .container-footer .left-content-footer p {
+    color: white;
+    font-size: 18px;
+    margin-top: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer .container-footer .right-content-footer {
+    width: 65%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer .container-footer .right-content-footer .btns-footer p{
+    color: white;
+}
+
+.footer .container-footer .right-content-footer .btns-footer .title-footer {
+    margin-bottom: 40px;
+}
+
+.footer .container-footer .right-content-footer .btns-footer .title-footer b {
+    font-family: 'Poppins', sans-serif;
+}
+    
+
+.social-media {
+    margin-top: 16px;
+}

@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container-publique {
+    display: flex;
+}
+
+.side-navbar {
+    height: 100vh;
+    background-color: #091227;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: solid 1px white;
+}
+
+.logo {
+    margin: 32px 0;
+    border-bottom: solid 1px #FF6584;
+}
+
+.logo img {
+    padding-bottom: 8px;
+}
+
+.side-navbar .navbar ul {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.side-navbar .navbar ul li {
+    list-style: none;
+}
+
+.side-navbar .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.side-navbar .bottom-side {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: end;
+    height: 50%;
+}
+
+.side-navbar .bottom-side .div-btn {
+    margin-bottom: 48px;
+}
+
+.side-navbar .bottom-side .div-btn .btn-logoff {
+    padding: 8px;
+    border-radius: 12px;
+    background-color: transparent;
+    color: white;
+    font-family: 'Poppins';
+    cursor: pointer;
+    border: none;
+}
+
+.container-publique .right-content {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#091227, white);
+}
+
+.container-publique .right-content .box-sheet-register {
+    padding: 32px;
+    border-radius: 12px;
+    background-color: #091227;
+    border: solid 1px white;
+}
+
+.container-publique .right-content .box-sheet-register h1 {
+   color: white;
+   font-family: 'Poppins', sans-serif;
+   padding-bottom: 48px;
+}
+
+.container-publique .right-content .box-sheet-register h3 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 32px;
+ }
+
+ .container-publique .right-content .box-sheet-register .username-view {
+   text-align: center;
+ }
+
+ .select-instruments {
+    padding: 8px;
+    border-color: white;
+    background-color: #091227;
+    color: white;
+    outline: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.container-publique .right-content .box-sheet-register p {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+ }
+
+ .inputs {
+    height: 16px;
+    border-radius: 12px;
+    padding: 8px 0px 8px 8px;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.name-inputs {
+    margin-top: 12px;
+}
+
+.div-btn-post {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.div-btn-post .btn-post {
+    padding: 8px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins';
+    background-color: #FF6584;
+    border: none;
+    cursor: pointer;
+}

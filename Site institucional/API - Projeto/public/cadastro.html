@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Sheets | Cadastro</title>
+
+    <script src="sessao.js"></script>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -31,6 +35,13 @@
             </div>
         </div>
         <div class="right-content">
+          <div class="login">
+            <div class="alerta_erro">
+              <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+              </div>
+            </div>
+          </div>
             <div class="box-register">
                 <h1>Cadastre-se</h1>
                 <div class="box-name">
@@ -64,7 +75,7 @@
                     </div>
 
                     
-                <button class="btn-register">Registrar</button>
+                <button class="btn-register" onclick="cadastrar()">Registrar</button>
                     
                 <div class="msg-login">
                     <p>Já possui uma conta? <a href="login.html">Entre</a></p>
@@ -76,3 +87,83 @@
 </body>
 
 </html>
+
+<script>
+    function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_name.value;
+    var lastNameVar = input_last_name.value;
+    var emailVar = input_email.value;
+    var usernameVar = input_username.value;
+    var senhaVar = input_password.value;
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" 
+      // ||
+      // senhaVar <= 6 || 
+      // nomeVar.length <= 1 ||
+      // emailVar.indexOf('@') < 0 ||
+      // emailVar.indexOf('.') < 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      // finalizarAguardar();
+      return false;
+    } else {
+      // setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        lastNameServer: lastNameVar,
+        emailServer: emailVar,
+        usernameServer: usernameVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
