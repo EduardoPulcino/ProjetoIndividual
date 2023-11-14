@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.container {
+    display: flex;
+}
+
 .side-navbar {
     height: 100vh;
     background-color: #091227;
@@ -10,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
 }
 
 .logo {
@@ -59,4 +64,64 @@
     font-family: 'Poppins';
     cursor: pointer;
     border: none;
+}
+
+.right-content-comunidade {
+    width: 80%;
+}
+
+.container-right-content {
+    margin: 0 2%;
+    height: 1000px;
+}
+
+.header-comunidade {
+    height: 150px;
+    position: relative;
+    background: linear-gradient(#091227, black);
+    width: 100%;
+    margin-left: 20%;
+}
+
+.header-comunidade .title-comunidade {
+    text-align: center;
+    padding-top: 50px;
+    font-family: 'Jura', sans-serif;
+    letter-spacing: 1px;
+    font-size: 32px;
+    color: white;
+}
+
+
+.header-comunidade .div-btn-details {
+    height: 24px;
+}
+
+.btn-details {
+    position: absolute;
+    right: 89px;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px;
+    background-color: #091227;
+    color: white;
+    cursor: pointer;
+    bottom: 2px;
+    border-radius: 8px;
+    border: none;
+}
+
+.container-right-content .container-cards {
+    width: 100%;
+    display: flex;
+    height: 200px;
+    padding-top: 20px;
+    justify-content: space-between;
+    
+}
+
+.cards {
+    width: 48%;
+    height: 100%;
+    background-color: #091227;
+    border-radius: 12px;
 }
