@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300&display=swap"
         rel="stylesheet">
+        <script src="./sessao.js"></script> 
 
     <link rel="stylesheet" href="css/publicacao.css">
     <link rel="icon" href="img/short-logo.svg">
@@ -20,6 +21,10 @@
             <div class="logo">
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
             </div>
+
+            <div class="hello">
+              <h3>Olá, <span id="username_usuario">usuário</span>!</h3> <br>
+          </div>
            
             <div class="navbar">
                 <ul>
@@ -30,7 +35,7 @@
     
             <div class="bottom-side">
                 <div class="div-btn">
-                    <button class="btn-logoff">Sair</button>
+                    <button class="btn-logoff" onclick="limparSessao()">Sair</button>
                 </div>
             </div>
         </header>
@@ -47,12 +52,12 @@
                 <div class="box-inputs">
                     <div class="name-select">
                         <p>Selecione o seu instrumento</p>
-                        <select name="" id="" class="select-instruments">
+                        <select name="" id="input_instrumento" class="select-instruments">
                             <option value="saxofone">Saxofone</option>
                             <option value="piano">Piano</option>
                             <option value="violao">Violão</option>
                             <option value="violino">Violino</option>
-                            <option value=""></option>
+                            <option value="trompete">Trompete</option>
                             <option value=""></option>
                             <option value=""></option>
                         </select>
@@ -74,11 +79,85 @@
                     </div>
 
                     <div class="div-btn-post">
-                        <button class="btn-post">Publicar</button>
+                        <button class="btn-post" onclick="publicar()">Publicar</button>
                     </div>
+
+                    <div id="mensagem_erro" class="success"></div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    username_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
+    function publicar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeArtistaVar = input_artista.value;
+    var generoVar = input_genero.value;
+    var urlVar = input_url.value;
+    if (
+      nomeArtistaVar == "" ||
+      generoVar == "" ||
+      urlVar == "" 
+      // ||
+      // senhaVar <= 6 || 
+      // nomeVar.length <= 1 ||
+      // emailVar.indexOf('@') < 0 ||
+      // emailVar.indexOf('.') < 0
+    ) {
+    //   cardErro.style.display = "block";
+    //   mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      // finalizarAguardar();
+      return false;
+    } else {
+      // setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/publicacoes/publicar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeArtistaServer: nomeArtistaVar,
+        generoServer: generoVar,
+        urlServer: urlVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        //   cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Partitura publicada com sucesso!";
+
+          setTimeout(() => {
+            window.location = "comunidade.html";
+          }, "2000");
+
+        //   limparFormulario();
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+</script>

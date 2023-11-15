@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300&display=swap"
         rel="stylesheet">
 
+
+    <script src="./sessao.js"></script> 
     <link rel="stylesheet" href="css/comunidade.css">
     <link rel="icon" href="img/short-logo.svg">
 </head>
@@ -19,6 +21,10 @@
         <header class="side-navbar">
             <div class="logo">
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
+            </div>
+
+            <div class="hello">
+                <h3>Olá, <span id="username_usuario">usuário</span>!</h3> <br>
             </div>
            
             <div class="navbar">
@@ -30,41 +36,60 @@
     
             <div class="bottom-side">
                 <div class="div-btn">
-                    <button class="btn-logoff">Sair</button>
+                    <button class="btn-logoff" onclick="limparSessao()">Sair</button>
                 </div>
             </div>
         </header>
     
         
-            <div class="header-comunidade">
-                <div class="right-content-comunidade"></div>
-                    <div class="title-comunidade">
-                        <h1>COMUNIDADE</h1>
+        <div class="header-comunidade">
+            <div class="right-content-comunidade"></div>
+                <div class="title-comunidade">
+                    <h1>COMUNIDADE</h1>
+                </div>
+                
+                <div class="div-btn-details">
+                    <button class="btn-details">Ver detalhes</button>
+                </div>
+                
+                <div class="container-right-content">
+                    <div class="container-cards">
+                        <div class="cards"></div>
+                        <div class="cards"></div>
                     </div>
-                    <div class="div-btn-details">
-                        <button class="btn-details">Ver detalhes</button>
-                    </div>
-                    
-                    <div class="container-right-content">
-                        <div class="container-cards">
-                            <div class="cards"></div>
-                            <div class="cards"></div>
-                        </div>
 
-                        <div class="container-cards">
-                            <div class="cards"></div>
-                            <div class="cards"></div>
-                        </div>
+                    <div class="container-cards">
+                        <div class="cards"></div>
+                        <div class="cards"></div>
+                    </div>
+
+                    <div class="container-cards">
+                        <div class="cards"></div>
+                        <div class="cards"></div>
+                    </div>
+
+                    <div class="container-cards">
+                        <div class="cards"></div>
+                        <div class="cards"></div>
+                    </div>
+
+                    <div class="container-cards">
+                        <div class="cards"></div>
+                        <div class="cards"></div>
                     </div>
                 </div>
+            </div>
 
+        </div>
+    </div>
 
                 
-            </div>
-    </div>
 </body>
 </html>
-    
+
+<script>
+    username_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+</script>
                 
                 
             

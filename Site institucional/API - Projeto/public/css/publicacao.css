@@ -66,12 +66,16 @@
     border: none;
 }
 
+.side-navbar .bottom-side .div-btn .btn-logoff:hover {
+    background: black;
+}
+
 .container-publique .right-content {
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(#091227, white);
+    background: radial-gradient(#091227, black);
 }
 
 .container-publique .right-content .box-sheet-register {
@@ -139,4 +143,11 @@
     background-color: #FF6584;
     border: none;
     cursor: pointer;
+}
+
+.success {
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 12px;
 }

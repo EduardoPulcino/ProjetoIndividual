@@ -78,9 +78,10 @@
 .header-comunidade {
     height: 150px;
     position: relative;
-    background: linear-gradient(#091227, black);
+    background: black;
     width: 100%;
     margin-left: 20%;
+    border-left: solid 1px white;
 }
 
 .header-comunidade .title-comunidade {
@@ -115,13 +116,13 @@
     display: flex;
     height: 200px;
     padding-top: 20px;
-    justify-content: space-between;
+    justify-content: space-around;
     
 }
 
 .cards {
     width: 48%;
     height: 100%;
-    background-color: #091227;
+    background: linear-gradient(45deg, black, #091227);
     border-radius: 12px;
 }

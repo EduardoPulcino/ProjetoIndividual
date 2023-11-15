@@ -22,7 +22,4 @@ create table publicacao (
 );
 
 select * from usuario;
- 
-SELECT idUsuario, nome, email FROM usuario WHERE email = 'c' AND senha = '123';
-
-INSERT INTO usuario (nome, sobrenome, email, username, senha) VALUES ('a', 'b', 'c', 'd', '123');
+select * from publicacao;
