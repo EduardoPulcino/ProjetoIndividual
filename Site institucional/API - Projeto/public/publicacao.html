@@ -15,21 +15,19 @@
     <link rel="stylesheet" href="css/publicacao.css">
     <link rel="icon" href="img/short-logo.svg">
 </head>
-<body>
+<body onload="validarSessao()">
     <div class="container-publique">
         <header class="side-navbar">
             <div class="logo">
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
             </div>
 
-            <div class="hello">
-              <h3>Olá, <span id="username_usuario">usuário</span>!</h3> <br>
-          </div>
+            
            
             <div class="navbar">
                 <ul>
                     <li><a href="comunidade.html">Comunidade</a></li>
-                    <li><a href="publicacao.html">Publique sua partitura</a></li>
+                    <li style="background-color: #FF6584;" ><a href="publicacao.html">Publique sua partitura</a></li>
                 </ul>
             </div>
     
@@ -43,9 +41,9 @@
         <div class="right-content">
             <div class="box-sheet-register">
                 <div class="username-view">
-                    <h3>Olá, </h3>
+                    <h3>Boas vindas, <span id="username_usuario"></span>!  </h3>
                 </div>
-                
+               
                 <div class="title">
                     <h1>Publique sua partitura!</h1>
                 </div>
@@ -58,8 +56,8 @@
                             <option value="violao">Violão</option>
                             <option value="violino">Violino</option>
                             <option value="trompete">Trompete</option>
-                            <option value=""></option>
-                            <option value=""></option>
+                            <option value="flauta">Flauta</option>
+                            <option value="trombone">Trombone</option>
                         </select>
                     </div>
 
@@ -97,6 +95,7 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+    var instrumentoVar = input_instrumento.value
     var nomeArtistaVar = input_artista.value;
     var generoVar = input_genero.value;
     var urlVar = input_url.value;
@@ -129,6 +128,7 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
+        instrumentoServer: instrumentoVar,
         nomeArtistaServer: nomeArtistaVar,
         generoServer: generoVar,
         urlServer: urlVar,

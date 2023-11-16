@@ -26,6 +26,19 @@
     padding-bottom: 8px;
 }
 
+.hello {
+    margin-bottom: 30px;
+}
+
+.hello h3 {
+    color: white;
+    font-family: 'Jura';
+}
+
+span#username_usuario {
+    color: #FF6584;
+}
+
 .side-navbar .navbar ul {
     display: flex;
     flex-direction: column;
@@ -36,6 +49,9 @@
 
 .side-navbar .navbar ul li {
     list-style: none;
+    padding: 8px;
+    border: solid 1px white;
+    border-radius: 12px;
 }
 
 .side-navbar .navbar ul li a {
@@ -87,13 +103,13 @@
 
 .container-publique .right-content .box-sheet-register h1 {
    color: white;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Jura', sans-serif;
    padding-bottom: 48px;
 }
 
 .container-publique .right-content .box-sheet-register h3 {
     color: white;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jura', sans-serif;
     padding-bottom: 32px;
  }
 

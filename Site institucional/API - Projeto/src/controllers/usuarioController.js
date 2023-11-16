@@ -23,6 +23,7 @@ function autenticar(req, res) {
                             idUsuario: resultadoAutenticar[0].idUsuario,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
+                            username: resultadoAutenticar[0].username
                         });
 
                     } else if (resultadoAutenticar.length == 0) {

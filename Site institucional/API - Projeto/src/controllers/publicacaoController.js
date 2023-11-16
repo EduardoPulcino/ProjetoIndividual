@@ -44,6 +44,7 @@ var publicacaoModel = require("../models/publicacaoModel");
 
 function publicar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var instrumento = req.body.instrumentoServer;
     var nomeArtista = req.body.nomeArtistaServer;
     var genero = req.body.generoServer;
     var url = req.body.urlServer;
@@ -59,7 +60,7 @@ function publicar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        publicacaoModel.publicar(nomeArtista, genero, url)
+        publicacaoModel.publicar(instrumento, nomeArtista, genero, url)
             .then(
                 function (resultado) {
                     res.json(resultado);

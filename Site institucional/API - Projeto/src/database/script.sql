@@ -23,3 +23,4 @@ create table publicacao (
 
 select * from usuario;
 select * from publicacao;
+
