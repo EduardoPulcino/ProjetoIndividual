@@ -110,4 +110,28 @@ input#input_email {
     list-style: none;
     font-family: 'Jura', sans-serif;
 }
+
+.card_erro {
+    text-align: center;
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+}
+
+.msg-erro {
+    font-family: 'Poppins', sans-serif;
+    color: red;
+    font-size: 16px;
+    width: fit-content;
+    margin-top: 4px;
+}
+
+span#mensagem_erro {
+    color: white;
+    /* border: solid 1px; */
+    padding: 8px;
+    border-radius: 8px;
+}
     

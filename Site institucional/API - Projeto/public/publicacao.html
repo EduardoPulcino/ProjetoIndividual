@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300&display=swap"
         rel="stylesheet">
-        <script src="./sessao.js"></script> 
+    <script src="./sessao.js"></script> 
 
     <link rel="stylesheet" href="css/publicacao.css">
     <link rel="icon" href="img/short-logo.svg">
@@ -103,11 +103,6 @@
       nomeArtistaVar == "" ||
       generoVar == "" ||
       urlVar == "" 
-      // ||
-      // senhaVar <= 6 || 
-      // nomeVar.length <= 1 ||
-      // emailVar.indexOf('@') < 0 ||
-      // emailVar.indexOf('.') < 0
     ) {
     //   cardErro.style.display = "block";
     //   mensagem_erro.innerHTML =
@@ -132,6 +127,7 @@
         nomeArtistaServer: nomeArtistaVar,
         generoServer: generoVar,
         urlServer: urlVar,
+        idUsuario: sessionStorage.ID_USUARIO
       }),
     })
       .then(function (resposta) {
@@ -150,7 +146,7 @@
         //   limparFormulario();
         //   finalizarAguardar();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Houve um erro ao tentar realizar a publicação!";
         }
       })
       .catch(function (resposta) {

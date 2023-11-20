@@ -30,6 +30,14 @@
                     <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
                 </div>
 
+                <div class="login">
+                    <div class="alerta_erro">
+                      <div class="card_erro" id="cardErro">
+                        <span id="mensagem_erro"></span>
+                      </div>
+                    </div>
+                  </div>
+
             </div>
         </div>
 
@@ -60,15 +68,14 @@
         var emailVar = input_email.value;
         var senhaVar = input_password.value;
 
-        // if (emailVar == "" || senhaVar == "") {
-        //     cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            cardErro.style.border = 'solid 1px white';
+            mensagem_erro.innerHTML = "Erro ao realizar o login";
+            return false;
+        }
+        else {
+        }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -87,6 +94,8 @@
 
             if (resposta.ok) {
                 console.log(resposta);
+                cardErro.style.display = "block";
+                cardErro.style.border = 'solid 1px #091227';
 
                 resposta.json().then((json) => {
                     console.log(json);

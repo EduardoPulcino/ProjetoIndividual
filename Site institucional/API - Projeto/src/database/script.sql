@@ -24,3 +24,7 @@ create table publicacao (
 select * from usuario;
 select * from publicacao;
 
+
+
+select * from publicacao where fkUsuario = 1;
+

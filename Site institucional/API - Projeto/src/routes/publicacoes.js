@@ -8,8 +8,8 @@ router.post("/publicar", function (req, res) {
     publicacaoController.publicar(req, res);
 })
 
-// router.post("/autenticar", function (req, res) {
-//     publicacaoController.autenticar(req, res);
-// });
+router.post("/autenticar", function (req, res) {
+    publicacaoController.autenticar(req, res);
+});
 
 module.exports = router;

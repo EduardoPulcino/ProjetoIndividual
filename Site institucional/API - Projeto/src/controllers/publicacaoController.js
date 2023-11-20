@@ -1,46 +1,47 @@
 var publicacaoModel = require("../models/publicacaoModel");
 
-// function autenticar(req, res) {
-//     var email = req.body.emailServer;
-//     var senha = req.body.senhaServer;
+function autenticar(req, res) {
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
-//     if (email == undefined) {
-//         res.status(400).send("Seu email está undefined!");
-//     } else if (senha == undefined) {
-//         res.status(400).send("Sua senha está indefinida!");
-//     } else {
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
 
-//         publicacaoModel.autenticar(email, senha)
-//             .then(
-//                 function (resultadoAutenticar) {
-//                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-//                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+        publicacaoModel.autenticar(email, senha)
+            .then(
+                function (resultadoAutenticar) {
+                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
-//                     if (resultadoAutenticar.length == 1) {
-//                         console.log(resultadoAutenticar);
+                    if (resultadoAutenticar.length == 1) {
+                        console.log(resultadoAutenticar);
 
-//                         res.json({
-//                             idUsuario: resultadoAutenticar[0].idUsuario,
-//                             email: resultadoAutenticar[0].email,
-//                             nome: resultadoAutenticar[0].nome,
-//                         });
+                        res.json({
+                            idUsuario: resultadoAutenticar[0].idUsuario,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                        });
 
-//                     } else if (resultadoAutenticar.length == 0) {
-//                         res.status(403).send("Email e/ou senha inválido(s)");
-//                     } else {
-//                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-//                     }
-//                 }
-//             ).catch(
-//                 function (erro) {
-//                     console.log(erro);
-//                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-//                     res.status(500).json(erro.sqlMessage);
-//                 }
-//             );
-//     }
+                    } else if (resultadoAutenticar.length == 0) {
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    } else {
+                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 
-// }
+}
+
 
 function publicar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -48,6 +49,7 @@ function publicar(req, res) {
     var nomeArtista = req.body.nomeArtistaServer;
     var genero = req.body.generoServer;
     var url = req.body.urlServer;
+    var idUsuario = req.body.idUsuario;
 
 
     // Faça as validações dos valores
@@ -60,7 +62,7 @@ function publicar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        publicacaoModel.publicar(instrumento, nomeArtista, genero, url)
+        publicacaoModel.publicar(instrumento, nomeArtista, genero, url, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -69,7 +71,7 @@ function publicar(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao realizar a publicação ! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -79,6 +81,6 @@ function publicar(req, res) {
 }
 
 module.exports = {
-    // autenticar,
+    autenticar,
     publicar
 }
