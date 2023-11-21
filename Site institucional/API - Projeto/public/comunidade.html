@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/comunidade.css">
     <link rel="icon" href="img/short-logo.svg">
 </head>
-<body onload="validarSessao()">
+<body onload="validarSessao(), atualizarFeed()">
     <div class="container">
         <header class="side-navbar">
             <div class="logo">
@@ -53,16 +53,9 @@
                 </div>
                 
                 <div class="container-right-content">
-                    <div class="container-cards">
-                        <div class="cards">
-                            <p>
-                                Usuario: 
-                                Instrumento:
-                                Artista:
-                                Gênero:
-                            </p>
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
                         </div>
-                        <div class="cards"></div>
                     </div>
                 </div>
             </div>
@@ -76,6 +69,61 @@
 
 <script>
     username_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
+    function atualizarFeed() {
+        fetch("/comunidades/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanTitulo = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var spanGenero = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        spanID.innerHTML = "Autor: <b>" + publicacao.username + "</b>";
+                        spanTitulo.innerHTML = "Artista: <b>" + publicacao.artista + "</b>";
+                        spanNome.innerHTML = "Instrumento: <b>" + publicacao.instrumento + "</b>";
+                        divDescricao.innerHTML = "Link da partitura: <b>" + publicacao.urlPDF + "</b>";
+                        spanGenero.innerHTML = "Gênero: <b>" + publicacao.genero + "</b>"
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        spanNome.className = "publicacao-nome";
+                        spanTitulo.className = "publicacao-titulo";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(spanGenero);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
 </script>
                 
                 

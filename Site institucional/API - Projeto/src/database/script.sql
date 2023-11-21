@@ -24,7 +24,8 @@ create table publicacao (
 select * from usuario;
 select * from publicacao;
 
+select usuario.username, p.instrumento, p.artista, p.genero, p.urlPDF, p.fkUsuario from publicacao as p join usuario on fkUsuario = idUsuario order by idPublicacao desc;
 
 
-select * from publicacao where fkUsuario = 1;
+
 
