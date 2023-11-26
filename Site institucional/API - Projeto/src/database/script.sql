@@ -23,7 +23,9 @@ create table publicacao (
 
 select * from usuario;
 select * from publicacao;
-
+select artista, count(artista) as quantidade from publicacao group by artista order by quantidade desc; 
+select instrumento, count(instrumento) as quantidade from publicacao group by instrumento order by quantidade desc;
+select genero, count(genero) as quantidade from publicacao group by genero order by quantidade desc;
 select usuario.username, p.instrumento, p.artista, p.genero, p.urlPDF, p.fkUsuario from publicacao as p join usuario on fkUsuario = idUsuario order by idPublicacao desc;
 
 

@@ -23,7 +23,7 @@
                 <p>Email</p>
                 <input type="text" class="input" id="input_email" placeholder="Digite seu email">
                 <p>Senha</p>
-                <input type="text" class="input" id="input_password" placeholder="Digite sua senha"> <br>
+                <input type="password" class="input" id="input_password" placeholder="Digite sua senha"> <br>
                 <button class="btn-login" onclick="entrar()">Login</button>
 
                 <div class="msg-register">
@@ -36,7 +36,7 @@
                         <span id="mensagem_erro"></span>
                       </div>
                     </div>
-                  </div>
+                </div>
 
             </div>
         </div>
@@ -69,9 +69,9 @@
         var senhaVar = input_password.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            cardErro.style.border = 'solid 1px white';
-            mensagem_erro.innerHTML = "Erro ao realizar o login";
+            // cardErro.style.display = "block"
+            // cardErro.style.border = 'solid 1px white';
+            mensagem_erro.innerHTML = "Preencha os campos";
             return false;
         }
         else {
@@ -94,8 +94,7 @@
 
             if (resposta.ok) {
                 console.log(resposta);
-                cardErro.style.display = "block";
-                cardErro.style.border = 'solid 1px #091227';
+                mensagem_erro.innerHTML = "Sucesso ao logar"
 
                 resposta.json().then((json) => {
                     console.log(json);
@@ -109,7 +108,7 @@
                 });
 
             } else {
-
+                mensagem_erro.innerHTML = "Usuário ou senha incorretos"
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 // resposta.text().then(texto => {

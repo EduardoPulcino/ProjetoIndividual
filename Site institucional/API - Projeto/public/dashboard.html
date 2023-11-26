@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Sheets | Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300&display=swap"
+        rel="stylesheet">
+    
+        
+    <script src="./sessao.js"></script> 
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="img/short-logo.svg">
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="side-navbar">
+            <div class="logo">
+                <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
+            </div>
+
+            
+           
+            <div class="navbar">
+                <ul>
+                    <li><a href="comunidade.html">Comunidade</a></li>
+                    <li><a href="publicacao.html">Publique sua partitura</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+            </div>
+    
+            <div class="bottom-side">
+                <div class="div-btn">
+                    <button class="btn-logoff" onclick="limparSessao()">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-dashboard">
+            <div class="grafico">
+                <h1 class="graph-title">ARTISTAS MAIS ACESSADOS</h1>
+                <section style="width: 500px;">
+                    <canvas id="myChartCanvas"></canvas>
+                </section>
+            </div>
+
+            <div class="grafico">
+                <h1 class="graph-title">INSTRUMENTOS MAIS PUBLICADOS
+                </h1>
+                <section style="width: 500px;">
+                    <canvas id="myChartCanvas2"></canvas>
+                </section>
+            </div>
+
+            <div class="grafico">
+                <h1 class="graph-title">GÊNEROS MAIS PROCURADOS
+                </h1>
+                <section style="width: 500px;">
+                    <canvas id="myChartCanvas3"></canvas>
+                </section>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+
+
+</body>
+</html>
+
+<script>
+    window.onload = obterDadosGrafico();
+    
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico() {
+
+        fetch(`/dashboard/buscarDadosArtistas`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+        fetch(`/dashboard/buscarDadosInstrumentos`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico2(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        fetch(`/dashboard/buscarDadosGenero`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico3(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'ARTISTAS MAIS ACESSADOS',
+                data: [],
+                fill: true,
+                backgroundColor: '#091227',
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var publicacao = resposta[i];
+            labels.push(publicacao.artista);
+            dados.datasets[0].data.push(publicacao.quantidade);
+            
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+    }
+
+    function plotarGrafico2(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'INSTRUMENTOS MAIS PUBLICADOS',
+                data: [],
+                fill: false,
+                backgroundColor: '#091227',
+                borderColor: '#fff)',
+                tension: 0.1
+            }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var publicacao = resposta[i];
+            labels.push(publicacao.instrumento);
+            dados.datasets[0].data.push(publicacao.quantidade);
+            
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas2`),
+            config
+        );
+    }
+
+    function plotarGrafico3(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'INSTRUMENTOS MAIS PUBLICADOS',
+                data: [],
+                fill: false,
+                backgroundColor: '#091227',
+                borderColor: '#fff)',
+                tension: 0.1
+            }
+            ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var publicacao = resposta[i];
+            labels.push(publicacao.genero);
+            dados.datasets[0].data.push(publicacao.quantidade);
+            
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas3`),
+            config
+        );
+    }
+</script>

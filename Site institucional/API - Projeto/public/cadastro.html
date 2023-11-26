@@ -65,7 +65,7 @@
                     
                     <div class="box-username">
                         <p class="titles-inputs">Nome de usuario</p>
-                        <input type="text" onkeyup="validarUsername()" class="inputs" id="input_username" placeholder="Digite seu nome de usuário">
+                        <input type="text"  class="inputs" id="input_username" placeholder="Digite seu nome de usuário">
                         <div class="msg-erro" id="error_username"></div>
                       </div>
                     
@@ -137,6 +137,7 @@
 
     function validarSenha(){
       var senhaVar = input_password.value;
+      var emailVar = input_email.value;
       
       var possui_especial =
       senhaVar.indexOf('#') >= 0 ||
@@ -148,7 +149,7 @@
       senhaVar.indexOf('+') >= 0 ||
       senhaVar.indexOf('_') >= 0;
 
-      var terminacaoEmail = email.endsWith('.com') || email.endsWith('.br') || email.endsWith('.school')
+      var terminacaoEmail = emailVar.endsWith('.com') || emailVar.endsWith('.br') || emailVar.endsWith('.school')
 
       if (senhaVar.length >= 8 && possui_especial && terminacaoEmail && (senhaVar != senhaVar.toUpperCase() && senhaVar != senhaVar.toLowerCase())) {
         input_password.style.border = 'solid 2px green'
@@ -170,6 +171,7 @@
     
     function cadastrar() {
     // aguardar();
+    validarSenha();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo

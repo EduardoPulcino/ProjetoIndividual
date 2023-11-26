@@ -8,82 +8,18 @@
 }
 
 .side-navbar {
-    height: 100vh;
-    background-color: #091227;
-    width: 20%;
+    position: relative;
+}
+
+
+
+.url-icon {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: solid 1px white;
 }
-
-.logo {
-    margin: 32px 0;
-    border-bottom: solid 1px #FF6584;
-}
-
-.logo img {
-    padding-bottom: 8px;
-}
-
-.hello {
-    margin-bottom: 30px;
-}
-
-.hello h3 {
-    color: white;
-    font-family: 'Jura';
-}
-
-span#username_usuario {
-    color: #FF6584;
-}
-
-.side-navbar .navbar ul {
-    display: flex;
-    flex-direction: column;
-    height: 150px;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.side-navbar .navbar ul li {
-    list-style: none;
-    padding: 8px;
-    border: solid 1px white;
-    border-radius: 12px;
-}
-
-.side-navbar .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-}
-
-.side-navbar .bottom-side {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: end;
-    height: 50%;
-}
-
-.side-navbar .bottom-side .div-btn {
-    margin-bottom: 48px;
-}
-
-.side-navbar .bottom-side .div-btn .btn-logoff {
-    padding: 8px;
-    border-radius: 12px;
-    background-color: transparent;
-    color: white;
-    font-family: 'Poppins';
-    cursor: pointer;
-    border: none;
-}
-
-.side-navbar .bottom-side .div-btn .btn-logoff:hover {
-    background: black;
+.info-icon {
+    height: 15px;
+    margin-left: 10px;
+    padding-top: 5px;
 }
 
 .container-publique .right-content {
@@ -139,6 +75,7 @@ span#username_usuario {
     border: none;
     outline: none;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .name-inputs {
@@ -166,5 +103,35 @@ span#username_usuario {
     color: white;
     font-family: 'Poppins', sans-serif;
     margin-top: 12px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #091227;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -130px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    
 }
 

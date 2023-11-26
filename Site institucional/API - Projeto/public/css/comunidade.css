@@ -1,85 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    display: flex;
-}
-
-.side-navbar {
-    height: 100vh;
-    background-color: #091227;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-}
-
-.logo {
-    margin: 32px 0;
-    border-bottom: solid 1px #FF6584;
-}
-
-.logo img {
-    padding-bottom: 8px;
-}
-
-.hello {
-    margin-bottom: 30px;
-}
-
-.hello h3 {
-    color: white;
-    font-family: 'Jura';
-}
-
-span#username_usuario {
-    color: #FF6584;
-}
-
-.side-navbar .navbar ul {
-    display: flex;
-    flex-direction: column;
-    height: 150px;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.side-navbar .navbar ul li {
-    list-style: none;
-    padding: 8px;
-    border: solid 1px white;
-    border-radius: 12px;
-}
-
-.side-navbar .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-}
-
-.side-navbar .bottom-side {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: end;
-    height: 50%;
-}
-
-.side-navbar .bottom-side .div-btn {
-    margin-bottom: 48px;
-}
-
-.side-navbar .bottom-side .div-btn .btn-logoff {
-    padding: 8px;
-    border-radius: 12px;
-    background-color: transparent;
-    color: white;
-    font-family: 'Poppins';
-    cursor: pointer;
-    border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .right-content-comunidade {
@@ -94,7 +15,7 @@ span#username_usuario {
 .header-comunidade {
     height: 150px;
     position: relative;
-    background: black;
+    background: white;
     width: 100%;
     margin-left: 20%;
     border-left: solid 1px white;
@@ -106,7 +27,7 @@ span#username_usuario {
     font-family: 'Jura', sans-serif;
     letter-spacing: 1px;
     font-size: 32px;
-    color: white;
+    color: #091227;
 }
 
 
@@ -211,33 +132,46 @@ span#username_usuario {
     background-color: #e6005a;
     width: 80px;
   }
-  
-  .publicacao {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    border-bottom: 3px solid #e6005a;
-    padding: 20px;
-  }
-  
-  .publicacao > *:not(:last-child) {
-    padding: 0 0 10px 0;
-  }
-  
+   
   .div-results {
     width: 100%;
   }
   
   .div-results .feed-container {
-    background: linear-gradient(45deg, black, #091227);
+    background-color: white;
     border-radius: 5px;
     margin-bottom: 80px;
     color: white;
   }
   
+  .publicacao {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: stretch;
+    border-bottom: 3px solid #e6005a;
+    padding: 20px;
+    background-color: #091227;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .publicacao .publicacao-textos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  
+  .publicacao > *:not(:last-child) {
+    padding: 0 0 10px 0;
+  }
+
+  .publicacao .publicacao-textos{
+    display: flex;
+    flex-direction: column;
+  }
   .div-buttons {
     display: flex;
     justify-content: flex-end;

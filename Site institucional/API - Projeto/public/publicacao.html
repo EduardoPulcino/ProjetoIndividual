@@ -10,8 +10,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300&display=swap"
         rel="stylesheet">
+    
+        
     <script src="./sessao.js"></script> 
-
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/publicacao.css">
     <link rel="icon" href="img/short-logo.svg">
 </head>
@@ -21,13 +23,16 @@
             <div class="logo">
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
             </div>
-
+            <!-- <div class="hello">
+              <h3>Olá, <span id="username_usuario">usuário</span>!</h3> <br>
+            </div> -->
             
            
             <div class="navbar">
                 <ul>
                     <li><a href="comunidade.html">Comunidade</a></li>
-                    <li style="background-color: #FF6584;" ><a href="publicacao.html">Publique sua partitura</a></li>
+                    <li style="background-color: white;" ><a style="color: #091227;" href="publicacao.html">Publique sua partitura</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
                 </ul>
             </div>
     
@@ -40,9 +45,6 @@
 
         <div class="right-content">
             <div class="box-sheet-register">
-                <div class="username-view">
-                    <h3>Boas vindas, <span id="username_usuario"></span>!  </h3>
-                </div>
                
                 <div class="title">
                     <h1>Publique sua partitura!</h1>
@@ -72,7 +74,16 @@
                     </div>
 
                     <div class="name-inputs">
-                        <p>URL da sua partitura:</p>
+                        <div class="url-icon">
+                          <p>URL da sua partitura:</p> 
+                          
+                          <div class="tooltip">
+                            <img class="info-icon" src="./img/iconinfo.svg" alt="">
+                            <div class="tooltiptext">
+                              Suba seu PDF no GoogleDrive e cole o link aqui!
+                            </div>
+                          </div>
+                        </div>
                         <input type="text" id="input_url" class="inputs">
                     </div>
 
@@ -98,7 +109,8 @@
     var instrumentoVar = input_instrumento.value
     var nomeArtistaVar = input_artista.value;
     var generoVar = input_genero.value;
-    var urlVar = input_url.value;
+    var urlVar = input_url.value.replace('view?usp=drive_link', 'preview');
+
     if (
       nomeArtistaVar == "" ||
       generoVar == "" ||
