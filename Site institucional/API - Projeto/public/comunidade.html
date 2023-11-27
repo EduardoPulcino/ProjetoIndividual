@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,12 @@
         rel="stylesheet">
 
 
-    <script src="./sessao.js"></script> 
+    <script src="./sessao.js"></script>
     <link rel="stylesheet" href="css/comunidade.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="icon" href="img/short-logo.svg">
 </head>
+
 <body onload="validarSessao(), atualizarFeed()">
     <div class="container">
         <header class="side-navbar">
@@ -24,48 +26,49 @@
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
             </div>
 
-            <div class="hello">
+            <div style="display: none;" class="hello">
                 <h3>Olá, <span id="username_usuario">usuário</span>!</h3> <br>
             </div>
-           
+
             <div class="navbar">
                 <ul>
-                    <li style="background-color: white;"><a style= "color: #091227;" href="comunidade.html">Comunidade</a></li>
+                    <li style="background-color: white;"><a style="color: #091227;"
+                            href="comunidade.html">Comunidade</a></li>
                     <li><a href="publicacao.html">Publique sua partitura</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
                 </ul>
             </div>
-    
+
             <div class="bottom-side">
                 <div class="div-btn">
                     <button class="btn-logoff" onclick="limparSessao()">Sair</button>
                 </div>
             </div>
         </header>
-    
-        
-        <div class="header-comunidade">
-            <div class="right-content-comunidade"></div>
+
+
+        <div class="right-content-comunidade">
+            <div class="header-comunidade">
                 <div class="title-comunidade">
                     <h1>COMUNIDADE</h1>
                 </div>
-                
+
                 <div class="div-btn-details">
                     <a href="dashboard.html"><button class="btn-details">Ver detalhes</button></a>
                 </div>
-                
-                <div class="container-right-content">
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
-                        </div>
+            </div>
+
+            <div class="container-right-content">
+                <div class="div-results">
+                    <div id="feed_container" class="feed-container">
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-                
+
 </body>
+
 </html>
 
 <script>
@@ -98,7 +101,7 @@
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
                         var spanGenero = document.createElement("span");
-                        
+
 
                         spanID.innerHTML = "Autor: <b>" + publicacao.username + "</b>";
                         spanTitulo.innerHTML = "Artista: <b>" + publicacao.artista + "</b>";
@@ -131,6 +134,3 @@
         });
     }
 </script>
-                
-                
-            

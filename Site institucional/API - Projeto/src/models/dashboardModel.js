@@ -35,7 +35,7 @@ function buscarDadosGenero() {
     instrucaoSql =  ''
 
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select genero, count(genero) as quantidade from publicacao group by genero order by quantidade desc;`;
+        instrucaoSql = `select genero, count(genero) as quantidade from publicacao group by genero order by quantidade;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

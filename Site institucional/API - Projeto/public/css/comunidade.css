@@ -4,7 +4,11 @@
 }
 
 .right-content-comunidade {
-    width: 80%;
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+
 }
 
 .container-right-content {
@@ -16,14 +20,12 @@
     height: 150px;
     position: relative;
     background: white;
-    width: 100%;
-    margin-left: 20%;
     border-left: solid 1px white;
 }
 
 .header-comunidade .title-comunidade {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
     font-family: 'Jura', sans-serif;
     letter-spacing: 1px;
     font-size: 32px;
@@ -146,11 +148,7 @@
   
   .publicacao {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: stretch;
     justify-content: space-evenly;
-    align-items: stretch;
     border-bottom: 3px solid #e6005a;
     padding: 20px;
     background-color: #091227;
@@ -158,20 +156,21 @@
     border-radius: 10px;
   }
 
+  .publicacao-pdf {
+    width: 65%;
+    border-left: solid 1px white;
+    padding-left: 20px
+}
+
   .publicacao .publicacao-textos {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 20px;
+    width: 35%
 }
-  
-  .publicacao > *:not(:last-child) {
-    padding: 0 0 10px 0;
-  }
 
-  .publicacao .publicacao-textos{
-    display: flex;
-    flex-direction: column;
-  }
   .div-buttons {
     display: flex;
     justify-content: flex-end;

@@ -109,16 +109,19 @@
     var instrumentoVar = input_instrumento.value
     var nomeArtistaVar = input_artista.value;
     var generoVar = input_genero.value;
-    var urlVar = input_url.value.replace('view?usp=drive_link', 'preview');
+    var urlVar = input_url.value.replace('view?usp=sharing', 'preview');
+    var validacaoUrl = urlVar.endsWith('preview')
+
 
     if (
       nomeArtistaVar == "" ||
       generoVar == "" ||
-      urlVar == "" 
+      urlVar == "" ||
+      validacaoUrl == false
     ) {
     //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML =
+        "Verifique os campos";
 
       // finalizarAguardar();
       return false;
