@@ -13,14 +13,72 @@
 
     <link rel="stylesheet" href="./css/perfil.css">
     <link rel="stylesheet" href="./css/navbar.css">
+    <script src="sessao.js"></script>
+    <!-- <script src="modal.js" defer></script> -->
 </head>
-<body>
+<body onload="validarSessao(), atualizarFeed()">
     <div class="container-perfil">
+        <!-- <button id=""></button> -->
+        <div id="fade" class="hide" >
+            <div id="modal" class="hide">
+                <div id="modal-header">
+                    <h1>Editar publicação</h1>
+                    <button id="close-modal">Fechar</button>
+                </div>
+
+                <div id="modal-body">
+                    <div class="box-inputs">
+                        <div class="name-select">
+                            <p>Selecione o seu instrumento</p>
+                            <select name="" id="input_instrumento" class="select-instruments">
+                                <option value="saxofone">Saxofone</option>
+                                <option value="piano">Piano</option>
+                                <option value="violao">Violão</option>
+                                <option value="violino">Violino</option>
+                                <option value="trompete">Trompete</option>
+                                <option value="flauta">Flauta</option>
+                                <option value="trombone">Trombone</option>
+                            </select>
+                        </div>
+    
+                        <div class="name-inputs">
+                            <p>Artista</p>
+                            <input type="text" id="input_artista" class="inputs">
+                        </div>
+    
+                        <div class="name-inputs">
+                            <p>Gênero da música</p>
+                            <input type="text" id="input_genero" class="inputs">
+                        </div>
+    
+                        <div class="name-inputs">
+                            <div class="url-icon">
+                                
+                                <div class="tooltip">
+                                    <p>URL da sua partitura:</p> 
+                                    <img class="info-icon" src="./img/iconinfo.svg" alt="">
+                                    <div class="tooltiptext">
+                                  Suba seu PDF no GoogleDrive e cole o link aqui!
+                                    </div>
+                              </div>
+                            </div>
+                            <input type="text" id="input_url" class="inputs">
+                        </div>
+    
+                        <div class="div-btn-post">
+                            <button class="btn-post" id="editar_button">Editar</button>
+                        </div>
+    
+                        <div id="mensagem_erro" class="success"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header class="side-navbar">
             <div class="logo">
                 <a href="index.html"><img src="img/img-comunidade.svg" alt=""></a>
             </div>
-
+            <img src="publicacao.html" alt="">
             
            
             <div class="navbar">
@@ -37,6 +95,215 @@
                 </div>
             </div>
         </header>
+
+        <div class="right-content-perfil">
+            <div class="header-perfil">
+                <div class="title-perfil">
+                    <h1>MINHAS PUBLICAÇÕES</h1>
+                </div>
+            </div>
+
+            <div class="container-right-content">
+                <div class="div-results">
+                    <div id="feed_container" class="feed-container">
+                    </div>
+                </div>
+            </div>         
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+<script>
+   
+    
+    
+    function editar(idPublicacao) {
+        var instrumentoVar = input_instrumento.value
+        var nomeArtistaVar = input_artista.value;
+        var generoVar = input_genero.value;
+        var urlVar = input_url.value.replace('view?usp=sharing', 'preview');
+        var validacaoUrl = urlVar.endsWith('preview')
+
+
+        if (
+        nomeArtistaVar == "" ||
+        generoVar == "" ||
+        urlVar == "" ||
+        validacaoUrl == false
+        ) {
+        mensagem_erro.innerHTML =
+            "Verifique os campos";
+
+        // finalizarAguardar();
+        return false;
+        }         
+        console.log("cliquei em editar - " + idPublicacao);
+
+        fetch(`/perfilUsuario/editar/${idPublicacao}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                instrumentoServer: instrumentoVar,
+                nomeArtistaServer: nomeArtistaVar,
+                generoServer: generoVar,
+                urlServer: urlVar,
+              }),
+        
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/perfil.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+     }
+
+    function deletar(idPublicacao) {
+        console.log("Criar função de apagar post escolhido - ID" + idPublicacao);
+        fetch(`/perfilUsuario/deletar/${idPublicacao}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "perfil.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    
+    function atualizarFeed() {
+        var idUsuario = sessionStorage.ID_USUARIO
+        // var idPublicacao = sessionStorage.ID_PUBLICACAO
+
+        fetch(`/perfilUsuario/dadosPerfil/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("h3");
+                    var divLink = document.createElement("div")
+                    var link = document.createElement('a')
+                    
+                    divLink.className = "div-link"
+                    link.setAttribute("href", "publicacao.html")
+                    
+                    mensagem.className = "msg-no-results"
+                    mensagem.innerHTML = "Ainda não há publicações!"
+                    link.innerHTML = "Publique já!"
+
+                    divLink.appendChild(link)
+                    feed.appendChild(mensagem);
+                    feed.appendChild(divLink);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var divTextos = document.createElement("div");
+                        var divPdf = document.createElement("div");
+                        var spanUsername = document.createElement("span");
+                        var spanArtista = document.createElement("span");
+                        var spanInstrumento = document.createElement("span");
+                        var spanGenero = document.createElement("span");
+                        var divButtons = document.createElement("div");
+                        var btnEditar = document.createElement("button");
+                        var btnDeletar = document.createElement("button");
+
+
+                        spanUsername.innerHTML = "Autor: <b>" + publicacao.username + "</b>";
+                        spanArtista.innerHTML = "Artista: <b>" + publicacao.artista + "</b>";
+                        spanInstrumento.innerHTML = "Instrumento: <b>" + publicacao.instrumento + "</b>";
+                        divPdf.innerHTML = `<iframe height = "300px" width="100%" src="${publicacao.urlPDF}" frameborder="0"></iframe>`;
+                        spanGenero.innerHTML = "Gênero: <b>" + publicacao.genero + "</b>"
+                        btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar";
+
+                        divPublicacao.className = "publicacao";
+                        divTextos.className = "publicacao-textos";
+                        divPdf.className = "publicacao-pdf";
+                        spanArtista.id = "inputNumero" + publicacao.idAviso;
+                        spanInstrumento.className = "publicacao-nome";
+                        spanArtista.className = "publicacao-titulo";
+
+                        divButtons.className = "div-buttons"
+
+                        btnEditar.className = "publicacao-btn-editar";
+                        btnEditar.id = "open-modal" + publicacao.idPublicacao;
+                        btnEditar.setAttribute("onclick", `openModal(${publicacao.idPublicacao})`);
+
+                        btnDeletar.className = "publicacao-btn-deletar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idPublicacao;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPublicacao})`);
+
+
+                        divTextos.appendChild(spanUsername);
+                        divTextos.appendChild(spanInstrumento);
+                        divTextos.appendChild(spanArtista);
+                        divTextos.appendChild(spanGenero);
+                        divPublicacao.appendChild(divTextos);
+                        divPublicacao.appendChild(divPdf);
+                        divPdf.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+
+    }
+
+
+    function openModal(idPublicacao){
+        const openModalButton = document.querySelector("#open-modal" + idPublicacao);
+        const closeModalButton = document.querySelector("#close-modal");
+        const modal = document.querySelector("#modal");
+        const fade = document.querySelector("#fade");
+
+        const toggleModal = () => {
+            modal.classList.toggle("hide")
+            fade.classList.toggle("hide")
+        }
+
+        [openModalButton, closeModalButton, fade].forEach((el) => {
+            el.addEventListener("click", () => toggleModal());
+        });
+        
+        var editarBtn = document.getElementById("editar_button")
+        editarBtn.setAttribute("onclick", `editar(${idPublicacao})`);
+
+    }
+
+
+</script>

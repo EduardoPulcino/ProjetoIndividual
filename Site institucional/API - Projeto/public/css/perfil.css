@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.right-content-perfil {
+    margin-left: 20%;
+}
+
+.header-perfil {
+    height: 150px;
+    /* position: relative; */
+    background: white;
+    border-left: solid 1px white;
+}
+
+.msg-no-results {
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  color: #091227;
+  text-align: center;
+}
+
+.div-link {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: #091227;
+  cursor: pointer;
+}
+
+.div-link a {
+  text-decoration: none;
+}
+
+.container-right-content {
+    margin: 0 2%
+}
+
+.header-perfil .title-perfil {
+    text-align: center;
+    padding-top: 40px;
+    font-family: 'Jura', sans-serif;
+    letter-spacing: 1px;
+    font-size: 32px;
+    color: #091227;
+}
+
+.div-results {
+    width: 100%;
+  }
+  
+  .div-results .feed-container {
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 80px;
+    color: white;
+  }
+  
+  .publicacao {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 3px solid #e6005a;
+    padding: 20px;
+    background-color: #091227;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .publicacao-pdf {
+    width: 65%;
+    border-left: solid 1px white;
+    padding-left: 20px
+}
+
+  .publicacao .publicacao-textos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 20px;
+    width: 35%
+}
+
+#open-modal {
+  margin-left: 30px;
+  padding: 8px;
+  font-family: 'Poppins';
+  border-radius: 8px;
+  border: none;
+  background-color: #FF6584;
+  color: white;
+  margin-top: 20px;
+}
+
+  .div-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .div-buttons > * {
+    margin-left: 30px;
+    padding: 8px;
+    font-family: 'Poppins';
+    border-radius: 8px;
+    border: none;
+    background-color: #FF6584;
+    color: white;
+    margin-top: 20px;
+  }
+  
+  .publicacao-pdf .div-form button {
+    cursor: pointer;
+    font-family: "Exo 2", sans-serif;
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #e6005a;
+    width: 120px;
+  }
+
+  .select-instruments {
+    padding: 8px;
+    border-color: white;
+    background-color: #091227;
+    color: white;
+    outline: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  
+  
+  .inputs {
+    height: 16px;
+    border-radius: 12px;
+    padding: 8px 0px 8px 8px;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .name-inputs {
+    margin-top: 12px;
+  }
+  
+  .div-btn-post {
+    text-align: center;
+    margin-top: 24px;
+  }
+  
+  .success {
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 12px;
+  }
+
+  .url-icon {
+    display: flex;
+}
+.info-icon {
+    height: 15px;
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+  .tooltip {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #091227;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -130px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    
+}
+
+#fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+#modal.hide,
+#fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#fade, #modal {
+  transition: 0.5s;
+  opacity: 1;
+  pointer-events: all;
+}
+
+#modal.hide {
+  top: 0;
+}
+
+#modal button {
+  padding: 8px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins';
+    background-color: #FF6584;
+    border: none;
+    cursor: pointer;
+  
+}
+
+#modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 32px;
+  border-radius: 12px;
+  background-color: #091227;
+  border: solid 1px white;
+  width: 400px;
+}
+
+#modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+#modal h1 {
+ color: white;
+ font-family: 'Jura', sans-serif;
+}
+
+#modal h3 {
+  color: white;
+  font-family: 'Jura', sans-serif;
+  padding-bottom: 32px;
+}
+
+#modal .username-view {
+ text-align: center;
+}
+
+#modal p {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+

@@ -285,10 +285,19 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'INSTRUMENTOS MAIS PUBLICADOS',
+                label: 'GENEROS MAIS PUBLICADOS',
                 data: [],
                 fill: false,
-                backgroundColor: 'white',
+                backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)'
+
+
+
+            ],
                 borderColor: '#fff)',
                 tension: 0.1
             }
@@ -303,7 +312,7 @@
         for (i = 0; i < resposta.length; i++) {
             var publicacao = resposta[i];
             labels.push(publicacao.genero);
-            dados.datasets[0].data.push(publicacao.quantidade);
+            dados.datasets[0].data.push((publicacao.quantidade / publicacao.total * 100).toFixed(2));
             
         }
 
@@ -317,17 +326,9 @@
 
         // Criando estrutura para plotar gráfico - config
         const config = {
-            type: 'bar',
+            type: 'pie',
             data: dados,
-            options: {
-                scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-            }
+           
         };
 
         // Adicionando gráfico criado em div na tela

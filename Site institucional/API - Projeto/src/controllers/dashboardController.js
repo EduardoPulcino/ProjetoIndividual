@@ -34,6 +34,11 @@ function buscarDadosInstrumentos(req, res){
 function buscarDadosGenero(req, res){
     dashboardModel.buscarDadosGenero().then(function (resultado) {
         if (resultado.length > 0) {
+            for (var i = 0; i < resultado; i++) {
+                // var outros = 
+
+            }
+            console.log('TAMO AQUI!!!!!!!!!!!!!', resultado)
             res.status(200).json(resultado);
         } else {
             res.status(204).send("Nenhum resultado encontrado!")

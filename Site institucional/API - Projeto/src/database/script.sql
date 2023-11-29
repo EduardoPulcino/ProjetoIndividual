@@ -27,6 +27,30 @@ select artista, count(artista) as quantidade from publicacao group by artista or
 select instrumento, count(instrumento) as quantidade from publicacao group by instrumento order by quantidade desc;
 select genero, count(genero) as quantidade from publicacao group by genero order by quantidade desc;
 select usuario.username, p.instrumento, p.artista, p.genero, p.urlPDF, p.fkUsuario from publicacao as p join usuario on fkUsuario = idUsuario order by idPublicacao desc;
+DELETE FROM publicacao WHERE idPublicacao = 12;
+
+SELECT 
+    genero, 
+    COUNT(genero) AS quantidade,
+    SUM(quantidade) OVER () AS total_de_registros
+FROM (
+    SELECT genero, COUNT(genero) AS quantidade 
+    FROM publicacao 
+    GROUP BY genero
+) AS subquery
+GROUP BY genero
+ORDER BY quantidade desc;
+
+SELECT 
+    todos_generos.genero, 
+    COUNT(publicacao.genero) AS quantidade,
+    SUM(COUNT(publicacao.genero)) OVER () AS total_de_registros
+FROM (
+    SELECT DISTINCT genero 
+    FROM publicacao
+) AS todos_generos
+LEFT JOIN publicacao ON todos_generos.genero = publicacao.genero
+GROUP BY todos_generos.genero;
 
 
 

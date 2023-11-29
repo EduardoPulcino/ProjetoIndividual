@@ -13,6 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var publicacoesRouter = require("./src/routes/publicacoes");
 var comunidadeRouter = require("./src/routes/comunidades");
 var dashboardRouter = require("./src/routes/dashboard");
+var perfilRouter = require ("./src/routes/perfilUsuario");
 
 
 app.use(express.json());
@@ -25,7 +26,8 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/publicacoes", publicacoesRouter);
 app.use("/comunidades", comunidadeRouter);
-app.use("/dashboard", dashboardRouter)
+app.use("/dashboard", dashboardRouter);
+app.use("/perfilUsuario", perfilRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

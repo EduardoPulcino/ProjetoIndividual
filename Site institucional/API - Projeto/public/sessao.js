@@ -6,7 +6,7 @@ function validarSessao() {
     var username_usuario = document.getElementById("username_usuario");
 
     if (email != null && username != null) {
-        username_usuario.innerHTML = username;
+        // username_usuario.innerHTML = username;
     } else {
         window.location = "../login.html";
     }
