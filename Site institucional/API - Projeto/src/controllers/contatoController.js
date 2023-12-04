@@ -31,8 +31,7 @@ async function cadastrarMensagem(req, res) {
         } else if (telefone == undefined) {
             res.status(400).send("Sua senha está undefined!");
         } else if(idUsuario == undefined){
-            res.status(401).send("Seu id está undefined!");
-        } 
+            res.status(401).send("Seu id está undefined!");        } 
         else {
             contatoModel.cadastrarMensagem(nome, email, telefone, mensagem, idUsuario)
                 .then(

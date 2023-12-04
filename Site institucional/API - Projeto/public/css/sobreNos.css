@@ -92,6 +92,53 @@ a {
     margin-top: 10px;
 }
 
+.vector {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ant, #prox {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  #ant {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    z-index: 1;
+  }
+
+  #prox {
+    top: 50%;
+    right: 10px;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+  }
+
+  #carroselImagens {
+    width: 60%;
+    max-height: 500px;
+    border-radius: 12px;
+    height: 400px
+   
+  }
+
 
 .container-mvv {
     height: 200px;

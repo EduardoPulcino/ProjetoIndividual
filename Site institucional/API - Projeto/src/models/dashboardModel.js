@@ -44,7 +44,7 @@ function buscarDadosGenero() {
         FROM publicacao
     ) AS todos_generos
     LEFT JOIN publicacao ON todos_generos.genero = publicacao.genero
-    GROUP BY todos_generos.genero LIMIT 4; `;
+    GROUP BY todos_generos.genero; `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

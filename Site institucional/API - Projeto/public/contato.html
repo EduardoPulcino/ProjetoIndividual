@@ -58,6 +58,10 @@
                 <div class="div-btn">
                     <button class="btn-send" onclick="cadastrarMensagem()">Enviar</button>
                 </div>
+
+                <div id="msg_erro" class="msg-erro">
+
+                </div>
             </div>
 
             <div class="inputs-form">
@@ -109,6 +113,16 @@
         var telefoneVar = input_telefone.value
         var mensagemVar = ipt_mensagem_contato.value
 
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            telefoneVar == "" ||
+            mensagemVar == "") 
+            {
+                msg_erro.innerHTML = `Verifique os campos`
+                return false
+            }
+
         fetch("/contato/cadastrarMensagem", {
             method: "POST",
             headers: {
@@ -132,14 +146,14 @@
           // limparFormulario();
           // finalizarAguardar();
         } else if(resposta.status == 401){
-            alert("CRIE UMA CONTA");
+            msg_erro.innerHTML = `Para entrar em contato conosco, <br>Crie uma conta já`
+
         } else {
             throw "Houve um erro ao tentar realizar o cadastroooos!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
       });
 
     return false;

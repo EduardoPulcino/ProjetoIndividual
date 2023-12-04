@@ -132,6 +132,13 @@ a {
     background-color: #FF6584;
     color: white;
     font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+div#msg_erro {
+    text-align: center;
+    font-family: 'Poppins';
+    margin-top: 12px;
 }
 
 textarea#ipt_mensagem_contato {

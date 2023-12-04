@@ -44,8 +44,14 @@
                 <p id="second-p"> À medida que o tempo avançava, aos 14 anos, o piano conquistou meu coração, levando-me a explorá-lo por conta própria. A música se tornou uma constante na minha vida, uma paixão que não apenas cultivei, mas pretendo preservar ao continuar a jornada com esses instrumentos. Nesse espírito musical, o Cover Sheets é concebido para inspirar a paixão pela música em outras pessoas, oferecendo uma comunidade aberta para publicação de partituras autorais e interpretações musicais.</p>
             </div>
 
-            <div class="img">
-                <img src="" alt="">
+            <div class="vector">
+                <button id="ant" onclick="trocarImagem(-1)">
+                    <img src="img/seta-esquerda.png" alt="Anterior">
+                  </button>
+                  <img id="carroselImagens" src="img/image1.jpg" alt="Imagem do Carrossel">
+                  <button id="prox" onclick="trocarImagem(1)">
+                    <img src="img/seta-direita.png" alt="Próxima">
+                  </button>
             </div>
         </div>
 
@@ -108,8 +114,30 @@
         </footer>
         
         
-        
+        <img src="img/image1.jpg" alt="">
     </div>
     
 </body>
 </html>
+
+<script>
+     var index = 1;
+
+function trocarImagem(n) {
+  mostrarImagem(index += n);
+}
+
+function mostrarImagem(n) {
+  var images = ["img/image1.jpg", "img/image2.jpg", "img/image3.jpg"]; 
+  if (n > images.length) {
+    index = 1;
+  } else if (n < 1) {
+    index = images.length;
+  }
+
+  var carroselImagens = document.getElementById('carroselImagens');
+  carroselImagens.src = images[index - 1];
+}
+
+mostrarImagem(index);
+</script>
