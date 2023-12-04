@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="div-btn">
-                    <button class="btn-send">Enviar</button>
+                    <button class="btn-send" onclick="cadastrarMensagem()">Enviar</button>
                 </div>
             </div>
 
@@ -100,3 +100,49 @@
     </footer>
 </body>
 </html>
+
+<script>
+
+    function cadastrarMensagem() {
+        var nomeVar = input_name.value
+        var emailVar = input_email.value
+        var telefoneVar = input_telefone.value
+        var mensagemVar = ipt_mensagem_contato.value
+
+        fetch("/contato/cadastrarMensagem", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            telefoneServer: telefoneVar,
+            mensagemServer: mensagemVar
+        }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        //   cardErro.style.display = "block";
+        //   cardErro.style.border = 'solid 1px #091227';
+        //   mensagem_erro.innerHTML =
+        //     "Cadastro realizado com sucesso! <br> Redirecionando para tela de Login...";
+          // limparFormulario();
+          // finalizarAguardar();
+        } else if(resposta.status == 401){
+            alert("CRIE UMA CONTA");
+        } else {
+            throw "Houve um erro ao tentar realizar o cadastroooos!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+</script>

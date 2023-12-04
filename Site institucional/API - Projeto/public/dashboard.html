@@ -197,8 +197,15 @@
                 scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontColor: '#FF6584'
                     }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#42a5f5'
+                    }
+
                 }]
             }
             }
@@ -224,9 +231,10 @@
             datasets: [{
                 label: 'INSTRUMENTOS MAIS PUBLICADOS',
                 data: [],
-                fill: false,
+                // fill: true,
                 backgroundColor: 'white',
-                borderColor: '#fff)',
+                borderColor: 'black',
+                borderWidth: 1,
                 tension: 0.1
             }
             ]
@@ -241,8 +249,8 @@
             var publicacao = resposta[i];
             labels.push(publicacao.instrumento);
             dados.datasets[0].data.push(publicacao.quantidade);
-            
         }
+            
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -260,8 +268,17 @@
                 scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontColor: '#FF6584'
+                    },
+                    
+                }],
+
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#42a5f5'
                     }
+
                 }]
             }
             }
@@ -289,12 +306,11 @@
                 data: [],
                 fill: false,
                 backgroundColor: [
-            'rgb(255, 99, 132)',
+            'rgb(255, 70, 92)',
             'rgb(54, 162, 235)',
             'rgb(255, 205, 86)',
             'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)'
-
+            'rgb(54, 162, 235)',
 
 
             ],

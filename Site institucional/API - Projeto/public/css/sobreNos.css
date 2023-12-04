@@ -3,14 +3,14 @@
     padding: 0;
 }
 
-.main-page {
-    height: 100px;
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
 .header {
     height: 100px;
     background-color: #091227;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     z-index: 9999;
 
@@ -46,7 +46,6 @@ a {
     color: white;
     font-size: 16px;
     font-weight: 200;
-    font-family: 'Poppins', sans-serif;
 }
 
 .header .container .navbar li {
@@ -65,89 +64,84 @@ a {
     letter-spacing: 1px;
 }
 
-.box-contact {
-    background-color: white;
+.page {
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    margin: 0 10%;
     height: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-    
-.title-contact {
-    text-align: center;
-    font-family: 'Jura', sans-serif;
-    font-size: 32px;
-    letter-spacing: 10px;
-    color: #091227;
-    padding-bottom: 32px;
 }
 
-.box-inputs {
-    width: 300px;
-}
-
-.box-inputs-msg {
-    display: flex;
+.about-text {
     width: 50%;
-    justify-content: space-between;
+    text-align: justify;
 }
 
-.box-inputs-msg p {
-    color: #091227;
+.about-text h1 {
+    margin: 44px 0;
+    font-family: 'JURA', sans-serif;
+}
+
+.about-text p {
     font-family: 'Poppins', sans-serif;
-    margin-top: 16px;
-    font-weight: bold;
-    font-size: 20px;
 }
 
-.input-title .inputs {
-    height: 24px;
-    border-radius: 12px;
-    padding: 8px;
-    border: none;
-    outline: none;
-    background-color: #091227;
-    color: white;
-    width: 100%;
+#second-p {
+    margin-top: 10px;
 }
 
-::placeholder {
-    color: white;
-}
 
-.div-btn {
-    width: 100%;
+.container-mvv {
+    height: 200px;
+    background-color: white;
+    margin: 0 10%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    border-top: solid 1px;
+    padding-top: 32px;
+    margin-bottom: 100px;
+
 }
 
-.btn-send {
-    width: 40%;
-    margin-top: 20px;
-    padding: 8px;
+.cards {
+    width: 31%;
+    background-color: #091227;
     border-radius: 12px;
-    border: none;
-    background-color: #FF6584;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    padding: 12px;
+    text-align: center;
+}
+
+.cards  img {
+    padding-top: 12px;
+}
+
+.cards .vision-img{
+   width: 70px; 
+}
+
+.cards h1 {
+    color: #FFF;
+    font-family: 'Jura', sans-serif;
+    padding-bottom: 12px
+}
+
+.cards p {
     color: white;
     font-family: 'Poppins', sans-serif;
-}
-
-textarea#ipt_mensagem_contato {
-    background-color: #091227;
-    padding: 8px;
-    border: solid 1px white;
-    border-radius: 12px;
-    height: 62.5%;
-    color: white;
 }
 
 .footer {
     background-color: #091227;
     height: 274px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .footer .container-footer {
@@ -165,8 +159,7 @@ textarea#ipt_mensagem_contato {
 .footer .container-footer .left-content-footer p {
     color: white;
     font-size: 18px;
-    margin-top: 12px;
-    font-family: 'Poppins', sans-serif;
+    margin-top: 12px
 }
 
 .footer .container-footer .right-content-footer {
@@ -183,11 +176,7 @@ textarea#ipt_mensagem_contato {
     margin-bottom: 40px;
 }
 
-.footer .container-footer .right-content-footer .btns-footer .title-footer b {
-    font-family: 'Poppins', sans-serif;
-}
-    
-
 .social-media {
     margin-top: 16px;
 }
+

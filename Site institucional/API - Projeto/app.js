@@ -14,6 +14,7 @@ var publicacoesRouter = require("./src/routes/publicacoes");
 var comunidadeRouter = require("./src/routes/comunidades");
 var dashboardRouter = require("./src/routes/dashboard");
 var perfilRouter = require ("./src/routes/perfilUsuario");
+var contatoRouter = require ("./src/routes/contato");
 
 
 app.use(express.json());
@@ -27,7 +28,8 @@ app.use("/usuarios", usuarioRouter);
 app.use("/publicacoes", publicacoesRouter);
 app.use("/comunidades", comunidadeRouter);
 app.use("/dashboard", dashboardRouter);
-app.use("/perfilUsuario", perfilRouter)
+app.use("/perfilUsuario", perfilRouter);
+app.use("/contato", contatoRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
